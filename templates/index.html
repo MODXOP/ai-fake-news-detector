@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake News Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" />
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 AI Fake News Detector</h1>
+        <form method="POST" action="/predict">
+            <textarea name="news" placeholder="Paste the news article here..." required>{{ input_text }}</textarea>
+            <button type="submit">Detect Fake News</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result"><strong>Result:</strong> {{ prediction }}</div>
+        {% endif %}
+
+        {% if confidence %}
+        <div class="result"><strong>Confidence:</strong> {{ confidence }}%</div>
+        {% endif %}
+    </div>
+</body>
+</html>
